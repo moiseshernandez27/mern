@@ -1,30 +1,25 @@
 # MERN App Deployment with Kubernetes
-## Descripción
 
-Esta aplicación MERN incluye un servidor backend construido con Node.js y Express, una base de datos MongoDB, y un frontend desarrollado con React. El repositorio está preparado para ser desplegado en un entorno Kubernetes, con servicios para MongoDB y webchat.
+## Description
+This MERN application includes a backend server built with Node.js and Express, a MongoDB database, and a frontend developed with React. The repository is prepared to be deployed in a Kubernetes environment, with services for MongoDB and webchat.
 
-## Requisitos
+## Requirements
+- Node.js (v12 or higher)
+- npm
+- MongoDB (or a cloud MongoDB instance like MongoDB Atlas)
+- Docker
+- Kubernetes
+- kubectl
 
-- [Node.js](https://nodejs.org/) (v12 o superior)
-- [npm](https://www.npmjs.com/)
-- [MongoDB](https://www.mongodb.com/) (o una instancia de MongoDB en la nube como MongoDB Atlas)
-- [Docker](https://www.docker.com/)
-- [Kubernetes](https://kubernetes.io/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+## Deployment Using Kubernetes
+Make sure you have a Kubernetes cluster running and kubectl configured to interact with your cluster.
 
-Despliegue
-Usando Kubernetes
-Asegúrate de tener un clúster de Kubernetes funcionando y kubectl configurado para interactuar con tu clúster.
+### 1. Create the secrets for MongoDB:
+```bash
+kubectl create secret generic mongodb-secret --from-literal=mongo-user=pass --from-literal=mongo-password==pass=
 
-Crea los secretos para MongoDB:
-bash
-Copy code
-kubectl create secret generic mongodb-secret --from-literal=mongo-user=bW9uZ291c2Vy --from-literal=mongo-password=bW9uZ29wYXNzd29yZA==
-Despliega los servicios y despliegues de Kubernetes:
-bash
-Copy code
+### 2. Deploy services and deployments
 kubectl apply -f k8s/mongodb-deployment.yaml
 kubectl apply -f k8s/mongodb-service.yaml
 kubectl apply -f k8s/webchat-deployment.yaml
 kubectl apply -f k8s/webchat-service.yaml
-Los archivos mongodb-deployment.yaml, mongodb-service.yaml, webchat-deployment.yaml y webchat-service.yaml deben estar en el directorio k8s y contener la configuración de Kubernetes para tus servicios.
