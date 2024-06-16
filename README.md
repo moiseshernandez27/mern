@@ -15,10 +15,11 @@ This MERN application includes a backend server built with Node.js and Express, 
 Make sure you have a Kubernetes cluster running and kubectl configured to interact with your cluster.
 
 ### 1. Create the secrets for MongoDB:
-```bash
+
 kubectl create secret generic mongodb-secret --from-literal=mongo-user=pass --from-literal=mongo-password==pass=
 
 ### 2. Deploy services and deployments
+
 kubectl apply -f k8s/mongodb-deployment.yaml
 kubectl apply -f k8s/mongodb-service.yaml
 kubectl apply -f k8s/webchat-deployment.yaml
